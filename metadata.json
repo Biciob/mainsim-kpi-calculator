@@ -1,0 +1,5 @@
+{
+  "name": "Calcolatori di Manutenzione Mainsim",
+  "description": "Una suite di calcolatori per KPI di manutenzione industriale. Calcola OEE, MTTR, MTBF e altro in modo semplice e veloce.",
+  "requestFramePermissions": []
+}
