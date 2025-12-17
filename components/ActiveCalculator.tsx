@@ -54,7 +54,10 @@ export const ActiveCalculator: React.FC<Props> = ({ config }) => {
       return;
     }
 
-    const formatted = Number.isInteger(rawResult) ? rawResult.toString() : rawResult.toFixed(2);
+    // Smart formatting: if number is very small (like failure rate), show more decimals
+    const formatted = Number.isInteger(rawResult) 
+      ? rawResult.toString() 
+      : (Math.abs(rawResult) < 0.1 ? rawResult.toFixed(5) : rawResult.toFixed(2));
 
     setResult({
       value: rawResult,

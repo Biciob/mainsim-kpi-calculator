@@ -161,4 +161,21 @@ export const CALCULATORS: CalculatorConfig[] = [
     },
     interpret: (val) => val >= 98 ? "Qualità eccellente." : "Tasso di scarto elevato, controllare i processi.",
   },
+  {
+    id: 'failure-rate',
+    title: 'Tasso di Guasto (Failure Rate)',
+    description: 'Misura la frequenza con cui si verificano i guasti. È l\'inverso dell\'MTBF e indica la probabilità di guasto nell\'unità di tempo.',
+    unit: 'guasti/ora',
+    inputs: [
+      { id: 'failures', label: 'Numero di guasti', placeholder: 'Es. 4' },
+      { id: 'operatingTime', label: 'Tempo operativo totale', placeholder: 'Es. 1000', unit: 'ore' },
+    ],
+    calculate: (values) => {
+      const count = safeParse(values.failures);
+      const time = safeParse(values.operatingTime);
+      if (time === 0) return null;
+      return count / time;
+    },
+    interpret: (val) => "Minore è il tasso, maggiore è l'affidabilità del sistema.",
+  },
 ];
